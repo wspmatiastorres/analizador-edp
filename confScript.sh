@@ -1,0 +1,1 @@
+setfacl -m u:5678:rwx /share

@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  analizadoredp:
+    image: analizadoredp
+    build:
+      context: .
+      dockerfile: ./Dockerfile

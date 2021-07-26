@@ -8,6 +8,7 @@ if __name__ == '__main__':
 
     # Nos cambiamos de directorio a donde se deben dejar los pdfs
     os.chdir('./pdf_files/')
+    os.system('touch demo.txt')
 
     # Recorre todos los archivos de la carpeta
     for file in os.listdir('.'):

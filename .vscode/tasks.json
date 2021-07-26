@@ -18,7 +18,7 @@
 				"dockerRun":{
 					"image": "analizadoredp:latest",
 					"volumes": [{
-						"localPath" : "${workspaceFolder}/pdf files",
+						"localPath" : "${workspaceFolder}/pdf_files",
 						"containerPath": "/app/pdf_files"
 					}]
 				},

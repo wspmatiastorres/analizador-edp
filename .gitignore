@@ -1,3 +1,6 @@
 # Carpetas
-pdf_files/*
-__pycache__/
+pdf_files/
+assets/
+
+# Archivos
+add-ssh-key.sh

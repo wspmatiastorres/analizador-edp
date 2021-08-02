@@ -1,14 +1,21 @@
 import myutil
 import os
 import re
+import pandas as pd
 
 if __name__ == '__main__':
-    # El diccionario a trabajar
-    dicc = {}
 
     # Nos cambiamos de directorio a donde se deben dejar los pdfs
     os.chdir('./pdf_files/')
     os.system('touch demo.txt')
+
+    # Arreglos que almacenarán los datos
+    proyecto = []
+    fase = []
+    valor = []
+    corrVal = []
+    nedpVal = []
+    fileName = []
 
     # Recorre todos los archivos de la carpeta
     for file in os.listdir('.'):
@@ -39,6 +46,13 @@ if __name__ == '__main__':
                             nedp
                         )
                     )
+                    fileName.append(file)
+                    proyecto.append(filedata["proyecto"])
+                    fase.append(filedata["fase"])
+                    valor.append(filedata["valor"])
+                    corrVal.append(correlativo)
+                    nedpVal.append(nedp)
+
 
                 # Se imprime la falla
                 else:
@@ -48,3 +62,17 @@ if __name__ == '__main__':
                 print(u'\n=== File: {0} | no válido ==='.format(file))
     # print(myutil.getEdpData())
 
+    # Ya fuera del loop, creamos el diccionario y posteriormente
+    # el dataframe
+    data = {
+        "file" : fileName,
+        "proyecto" : proyecto,
+        "fase" : fase,
+        "valor" : valor,
+        "corrVal" : corrVal,
+        "nedpVal" : nedpVal
+    }
+    df = pd.DataFrame(data)
+    df.to_csv('data.csv')
+    print("Analisis finalizado...")
+    print(df)

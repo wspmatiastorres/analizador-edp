@@ -1,5 +1,6 @@
 import slate3k as slate
 import re
+#import fitz
 
 # 
 def getEdpData(pdfpath = "./pdf_files/a.pdf"):

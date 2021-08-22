@@ -7,6 +7,8 @@ if __name__ == '__main__':
 
     # Nos cambiamos de directorio a donde se deben dejar los pdfs
     os.chdir('./pdf_files/')
+    os.system('rm s_*')
+    os.system('rm signature.pdf')
     os.system('touch demo.txt')
 
     # Arreglos que almacenarán los datos
@@ -21,7 +23,7 @@ if __name__ == '__main__':
     for file in os.listdir('.'):
 
         # Solo se procesan los archivos .pdf
-        if file.endswith('.pdf'):
+        if file.endswith('.pdf') and not file.startswith('s_'):
             
             # Solo tiene sentido procesar "largos" mayores que 6 letras
             if len(file) > 6:
@@ -52,6 +54,13 @@ if __name__ == '__main__':
                     valor.append(filedata["valor"])
                     corrVal.append(correlativo)
                     nedpVal.append(nedp)
+
+                    # Ejecución de función que firma el archivo
+                    # Se crea el pdf vacío
+                    #os.system('touch signature.pdf')
+                    #os.system('ls -al')
+                    myutil.signFile(file)
+                    os.system('rm signature.pdf')
 
 
                 # Se imprime la falla
